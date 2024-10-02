@@ -1,0 +1,11 @@
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    tmpfs:
+      - /run:exec
+    read_only: true
+    environment:
+      - SUBDOMAINS=${DUCK_SUBDOMAIN}
+      - TOKEN=${DUCK_TOKEN}
+      - LOG_FILE=false
+    restart: unless-stopped
